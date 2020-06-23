@@ -1,7 +1,10 @@
 /**
+ * @date 23/06/2020
  * @author Vanderson de Moura Vauruk
- * @date 05/06/2020
+ * @email vauruk@gmail.com
+ * @linkedin https://www.linkedin.com/in/vauruk/
  */
+
 import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { store, persistor } from '../../../services/store';

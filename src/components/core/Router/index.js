@@ -1,4 +1,10 @@
 /* eslint-disable no-console */
+/**
+ * @date 23/06/2020
+ * @author Vanderson de Moura Vauruk
+ * @email vauruk@gmail.com
+ * @linkedin https://www.linkedin.com/in/vauruk/
+ */
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -17,7 +23,7 @@ import SideBar from '../SideBar';
 
 import Home from '../Home'
 import Login from '../Login'
-//import Register from '../Register'
+import Register from '../Register'
 import Splash from '../Splash'
 //import About from '../About'
 //import Help from '../Help'
@@ -97,7 +103,7 @@ class MainRouter extends Component<Props>  {
                 renderTitle={<Text style={styles.headerTitle}>{I18n.get('Home')}</Text>}
                 navigationBarStyle={stylesLocal.navBar}
                 hideNavBar={false}
-                onRight={() => console.log('Pressed')}
+              //  onRight={() => console.log('Pressed')}
               // renderRightButton={<HeaderNotification />}
               />
               {/* <Scene key="about"
@@ -148,7 +154,7 @@ class MainRouter extends Component<Props>  {
               direction="vertical"
               navTransparent
             />
-            {/* <Scene
+            <Scene
               key="register"
               component={Register}
               titleStyle={styles.headerTitle}
@@ -157,7 +163,7 @@ class MainRouter extends Component<Props>  {
               renderTitle={<Text style={styles.headerTitle}> {I18n.get('Register')}</Text>}
               leftTitle={arrowLeft}
               navigationBarStyle={stylesLocal.navBar}
-            /> */}
+            />
             {/* <Scene
               key="termsConditions"
               component={TermsConditions}
@@ -208,7 +214,7 @@ const stylesLocal = StyleSheet.create({
     textAlign: 'center',
   },
   navBar: {
-    backgroundColor: theme.PRIMARY_COLOR,
+    backgroundColor: theme.PRIMARY_COLOR_FONT,
     //  height: 80,
     borderBottomWidth: 0,
   },

@@ -221,7 +221,14 @@ export const styles = StyleSheet.create({
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height
     },
-
+    logo: {
+        alignItems: 'center',
+        width: '80%',
+        // Without height undefined it won't work
+        height: undefined,
+        // figure out your image aspect ratio
+        aspectRatio: 150 / 100,
+    },
     centerGrid: {
         //height: 100,
         justifyContent: 'center',
@@ -235,7 +242,7 @@ export const styles = StyleSheet.create({
     },
     modalHeaderLight: {
         padding: 18,
-        textTransform: 'capitalize',
+        // textTransform: 'capitalize',
         textAlign: 'center',
         borderBottomColor: PRIMARY_COLOR,
         borderBottomWidth: 1,
@@ -267,13 +274,14 @@ export const styles = StyleSheet.create({
         // marginTop: 50,
         borderRadius: 50,
         height: 50,
-        backgroundColor: PRIMARY_COLOR,
+        color: WHITE_COLOR,
+        backgroundColor: PRIMARY_COLOR_FONT
     },
     buttonConfirm: {
         //marginTop: 50,
-        backgroundColor: SECONDARY_COLOR,
+        backgroundColor: PRIMARY_COLOR,
         borderRadius: 50,
-        color: PRIMARY_COLOR,
+        color: WHITE_COLOR,
         height: 50,
         marginLeft: '15%',
         marginRight: '15%',

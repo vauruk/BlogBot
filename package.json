@@ -12,6 +12,8 @@
   "dependencies": {
     "@aws-amplify/core": "^3.4.0",
     "@react-native-community/async-storage": "^1.11.0",
+    "@react-native-firebase/app": "^7.2.1",
+    "@react-native-firebase/auth": "^8.0.6",
     "axios": "^0.19.2",
     "crypto-js": "3.3.0",
     "lodash": "^4.17.15",

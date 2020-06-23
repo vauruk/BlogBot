@@ -14,8 +14,8 @@ const initialState = {
   showChangePasswordModal: false,
   savedUser: false,
   loadingForgot: false,
-  isOpenEditProfile: false,
-  isLoading: false
+  loginLoading: false,
+  registerLoading: false
 };
 
 export default (state = initialState, action) => {
@@ -61,14 +61,8 @@ export default (state = initialState, action) => {
     case types.OPEN_FORGOT_PASSWORD: {
       return { ...state, isOpenForgotPassword: action.payload };
     }
-    case types.SHOW_MODAL_EDIT_PROFILE: {
-      return { ...state, isOpenEditProfile: action.payload,  };
-    }
     case types.SHOW_IN_FORGOT_PASWORD: {
       return { ...state, showInsertPassword: action.payload };
-    }
-    case types.SHOW_REGISTER: {
-      return { ...state, showRegister: action.payload };
     }
     case types.SHOW_FORGOT: {
       return { ...state, showForgot: action.payload };
@@ -84,7 +78,10 @@ export default (state = initialState, action) => {
     }
     case types.LOADING_LOGIN: {
       console.log("LOADING_LOGIN", action)
-      return { ...state, isLoading: action.payload };
+      return { ...state, loginLoading: action.payload };
+    }
+    case types.LOADING_REGISTER: {
+      return { ...state, loginLoading: action.payload };
     }
     default:
       return state;

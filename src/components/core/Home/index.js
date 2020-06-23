@@ -1,8 +1,11 @@
 /**
+ * @date 23/06/2020
  * @author Vanderson de Moura Vauruk
+ * @email vauruk@gmail.com
+ * @linkedin https://www.linkedin.com/in/vauruk/
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -11,11 +14,12 @@ import {
 } from 'react-native';
 
 import { Icon, Input, Spinner } from 'native-base'
+import { I18n } from '@aws-amplify/core';
+import { getUserDataAction } from '../../../services/actions/auth'
 
 import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
-
 
 import theme, { styles } from '../Theme';
 
@@ -26,12 +30,10 @@ const Home: () => React$Node = (props) => {
   // const loading = useSelector(state => state.core.loading)
   // const count = useSelector(state => state.core.count)
 
-  const { count, loading } = useSelector(state => ({
-    count: state.core.count,
-    loading: state.core.loading,
-  }), shallowEqual);
-
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getUserDataAction())
+  }, [])
 
   // searchPokemon = (textToSearch) => {
   //   console.log("searchPokemon")
@@ -45,16 +47,16 @@ const Home: () => React$Node = (props) => {
         style={stylesLocal.scrollView}>
         <View>
           <View style={stylesLocal.sectionContainer}>
-            <Text style={stylesLocal.sectionTitle}>Pokédex</Text>
+            <Text style={stylesLocal.sectionTitle}>Blog Boticario</Text>
             <Text style={stylesLocal.sectionDescription}>Search for Pokémon by name or using the Nactional Pokédex number</Text>
           </View>
         </View>
-        <View style={{ height: 30 }}>
+        {/* <View style={{ height: 30 }}>
           {loading &&
             <View style={{ justifyContent: "center", alignContent: "center", alignItems: "center" }}>
               <Spinner size={40} color='#8bd675' />
             </View>}
-        </View>
+        </View> */}
       </ScrollView>
     </View>
   );
@@ -66,7 +68,7 @@ export default Home;
 
 const stylesLocal = StyleSheet.create({
   scrollView: {
-    backgroundColor: theme.WHITE,
+    backgroundColor: theme.WHITE_COLOR,
     height: '100%',
     // backgroundColor: 'red'
   },

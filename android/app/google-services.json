@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1064425179735",
+    "firebase_url": "https://blogboticario.firebaseio.com",
+    "project_id": "blogboticario",
+    "storage_bucket": "blogboticario.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064425179735:android:d0fe8ff39ff9515d62f112",
+        "android_client_info": {
+          "package_name": "br.com.vanderson.vauruk.boticarioblogteste"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064425179735-ou7n2kf7cck6805p9na426uuhm2l152t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnY69MEqLSrXlH75XdjnOk39DNONO7lG4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064425179735-ou7n2kf7cck6805p9na426uuhm2l152t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
