@@ -89,17 +89,8 @@ const Login: () => React$Node = () => {
         }
     }
 
-    // handlePasswordInputSubmit = () => {
-    //     this.setState({ focusPassword: true });
-    // }
-
-    // render() {
-    //     const { errorAuthMessage } = this.props
-    //     // console.log("errorAuthMessage", errorAuthMessage)
-    //     console.log("isLoadin", isLoading)
     return (
         <Container style={[{ backgroundColor: theme.WHITE_COLOR }]}>
-            {/* <ChangePassword userId={textUser} showChangePasswordModal={showChangePasswordModal} /> */}
             <Modal
                 overFullScreen
                 transparent
@@ -109,7 +100,6 @@ const Login: () => React$Node = () => {
                 <TouchableOpacity
                     style={styles.bodyPopup}
                     activeOpacity={1}
-                // onPress={() => this.showModalForgotPassword()}
                 >
                     <View style={[styles.wrapperPopup, { height: 260 }]}>
                         <Text style={styles.modalHeaderLight}  >
@@ -246,19 +236,5 @@ const Login: () => React$Node = () => {
     );
     //}
 }
-
-// const mapStateToProps = (state) => ({
-//     isLoading: state.auth.isLoading,
-//     errorAuthMessage: state.auth.errorAuthMessage,
-//     showChangePasswordModal: state.auth.showChangePasswordModal,
-//     loadingForgot: state.auth.loadingForgot,
-//     isOpenForgotPassword: state.auth.isOpenForgotPassword,
-//     //   allowFontScaling: state.core.allowFontScaling
-// });
-// const mapDispatchToProps = dispatch =>
-//     bindActionCreators(authActions, dispatch);
-
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Login);
 export default Login;
 

@@ -6,9 +6,11 @@ import { combineReducers } from 'redux';
 
 import core from './core';
 import auth from './auth';
+import news from './news';
 
 
 export default combineReducers({
     core,
-    auth
+    auth,
+    news
 });

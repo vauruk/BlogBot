@@ -6,7 +6,7 @@ import {
     Form, Item, Input, Label, Content,
     Toast, Col, Row, Grid
 } from 'native-base';
-import { Text, TextInput } from 'react-native'
+import { Text, Image } from 'react-native'
 import {
     View,
     Platform,
@@ -149,13 +149,12 @@ const Register: () => React$Node = (props) => {
                         </View>
                         <View style={{ margin: 40, marginTop: 5 }}>
                             <Form>
-                                <Item style={{ marginTop: 5, marginLeft: 5, marginRight: 5 }} error={message ? true : false}>
+                                <Item style={{ marginTop: 5, marginLeft: 5, marginRight: 5 }} >
                                     <Input
                                         keyboardType='default'
                                         value={displayName}
                                         placeholderTextColor={theme.PRIMARY_COLOR_FONT}
                                         style={{ fontSize: theme.TEXT_18, color: theme.PRIMARY_COLOR_FONT }}
-                                        //textContentType='emailAddress'
                                         maxLength={155}
                                         placeholder={I18n.get('Name')}
                                         autoCapitalize='none'

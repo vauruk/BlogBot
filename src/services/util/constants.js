@@ -1,24 +1,9 @@
-/**
- * @author Vanderson de Moura Vauruk
- * @date 05/06/2020
- */
-import {
-    Icon
-} from 'native-base'
-const URL_API = 'pokeapi.co'
-const URL_PROD = URL_API
-const URL_DEV = URL_API
+export const TIME_ZONE = "America/Sao_Paulo";
+export const formatDataHourChat = 'DD/MM/YY HH:mm';
+export const formatDataHour = 'DD/MM/YYYY - HH:mm';
+export const formatDataSort = 'DD/MM/YY';
+export const formatData = 'DD/MM/YYYY';
 
-export const getUrl = () => {
-    if (__DEV__) {
-        URL = `https://${URL_DEV}/api/v2`
-    } else {
-        URL = `https://${URL_PROD}/api/v2`
-    }
-
-    // console.log("Mode Http__DEV__", __DEV__, URL)
-    return URL
-}
 
 export const errorClg = async (error, dispatch) => {
     //CrashReporter.notify(error);

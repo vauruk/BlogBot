@@ -1,12 +1,17 @@
+/**
+ * @date 23/06/2020
+ * @author Vanderson de Moura Vauruk
+ * @email vauruk@gmail.com
+ * @linkedin https://www.linkedin.com/in/vauruk/
+ */
+
 import * as types from './types';
 //import * as typesLoading from '../loading/types';
 //import * as typesCore from '../core/types';
-import { AsyncStorage, Alert } from 'react-native'
+import { Alert } from 'react-native'
 import auth from '@react-native-firebase/auth';
 
-import Api from '../../util/api'
 import { errorClg, showModalInfo } from '../../util/constants'
-//import { removeMaskCpf, removeMaskPhone } from '../../util/masks'
 import { I18n } from '@aws-amplify/core';
 
 import { Actions } from 'react-native-router-flux';
@@ -36,15 +41,15 @@ export const signUp = (email, password, displayName) => {
         auth()
             .createUserWithEmailAndPassword(email, password)
             //.then()
-            .then((res) => {
-                console.log(res, 'User account created & signed in!');
-                dispatch({ type: types.CURRENT_USER, payload: res.user })
-                Actions.home()
+            .then(async (res) => {
                 const update = {
                     displayName: displayName,
                     //photoURL: 'https://my-cdn.com/assets/user/123.png',
                 };
-                auth().currentUser.updateProfile(update);
+                await auth().currentUser.updateProfile(update);
+                console.log(res, 'User account created & signed in!');
+                dispatch({ type: types.CURRENT_USER, payload: res.user })
+                Actions.home()
             })
             .catch(error => {
                 if (error.code === 'auth/email-already-in-use') {

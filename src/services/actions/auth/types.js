@@ -1,3 +1,10 @@
+/**
+ * @date 23/06/2020
+ * @author Vanderson de Moura Vauruk
+ * @email vauruk@gmail.com
+ * @linkedin https://www.linkedin.com/in/vauruk/
+ */
+
 export const CURRENT_USER = 'CURRENT_USER';
 export const USER_STORE = '@UserLogged:key';
 export const LOAD_USER = 'LOAD_USER';

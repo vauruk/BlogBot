@@ -1,3 +1,11 @@
+/**
+ * @date 23/06/2020
+ * @author Vanderson de Moura Vauruk
+ * @email vauruk@gmail.com
+ * @linkedin https://www.linkedin.com/in/vauruk/
+ */
+
+
 import * as types from '../../actions/auth/types';
 
 const initialState = {

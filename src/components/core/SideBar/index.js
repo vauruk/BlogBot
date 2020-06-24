@@ -49,10 +49,10 @@ const SideBar: () => React$Node = (props) => {
         // dispatch(getUserDataAction())
     }, [])
 
-    console.log("object", userData)
+    //console.log("object", userData)
     handleLogout = () => {
         dispatch(logout())
-        this.showModalLogout()
+        showModalLogout()
         persistor.purge()
         Actions.login()
     }
@@ -125,16 +125,33 @@ const SideBar: () => React$Node = (props) => {
                         </Grid>
                     </View>
                     <View style={{ borderBottomColor: theme.PRIMARY_COLOR, borderBottomWidth: 2 }}>
-
                     </View>
                     <List>
                         <ListItem disabled={navDisable} style={stylesLocal.item}
-                            onPress={() => this.navFluxDelay(() => Actions.home())} >
+                            onPress={() => navFluxDelay(() => Actions.home())} >
                             <Left>
                                 <Button iconLeft transparent>
                                     <Icon type={'MaterialCommunityIcons'} name="home" size={20} style={{ marginLeft: 5, marginRight: 6, color: theme.SECONDARY_COLOR }} />
                                 </Button>
-                                <Text style={{ marginLeft: 10, color: theme.SECONDARY_COLOR, fontSize: theme.TEXT_14 }}>{I18n.get('Home')}</Text>
+                                <Text style={{ marginLeft: 5, color: theme.SECONDARY_COLOR, fontSize: theme.TEXT_14 }}>{I18n.get('Home')}</Text>
+                            </Left>
+                        </ListItem>
+                        <ListItem disabled={navDisable} style={stylesLocal.item}
+                            onPress={() => navFluxDelay(() => Actions.news())} >
+                            <Left>
+                                <Button iconLeft transparent>
+                                    <Icon type={'MaterialCommunityIcons'} name="newspaper" size={20} style={{ marginLeft: 5, marginRight: 6, color: theme.SECONDARY_COLOR }} />
+                                </Button>
+                                <Text style={{ marginLeft: 5, color: theme.SECONDARY_COLOR, fontSize: theme.TEXT_14 }}>{I18n.get('News')}</Text>
+                            </Left>
+                        </ListItem>
+                        <ListItem disabled={navDisable} style={stylesLocal.item}
+                            onPress={() => navFluxDelay(() => Actions.about())} >
+                            <Left>
+                                <Button iconLeft transparent>
+                                    <Icon type={'MaterialCommunityIcons'} name="information" size={20} style={{ marginLeft: 5, marginRight: 6, color: theme.SECONDARY_COLOR }} />
+                                </Button>
+                                <Text style={{ marginLeft: 5, color: theme.SECONDARY_COLOR, fontSize: theme.TEXT_14 }}>{I18n.get('About')}</Text>
                             </Left>
                         </ListItem>
                         {/* <ListItem disabled={this.state.navDisable} style={stylesLocal.item}
@@ -152,7 +169,7 @@ const SideBar: () => React$Node = (props) => {
                             currentUser &&
                             <ListItem style={stylesLocal.item} onPress={() => showModalLogout()}>
                                 <Left>
-                                    <Icon type={'MaterialCommunityIcons'} name="logout-variant" size={20} style={{ marginLeft: 5, marginRight: 6, color: theme.SECONDARY_COLOR }} />
+                                    <Icon type={'MaterialCommunityIcons'} name="logout-variant" style={{ marginLeft: 5, fontSize: 25, marginRight: 6, color: theme.SECONDARY_COLOR }} />
                                     <Text style={{ marginLeft: 10, color: theme.SECONDARY_COLOR, fontSize: theme.TEXT_14 }}>{I18n.get('Sign Out')}</Text>
                                 </Left>
                             </ListItem>

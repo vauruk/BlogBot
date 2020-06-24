@@ -1,6 +1,8 @@
 /**
+ * @date 23/06/2020
  * @author Vanderson de Moura Vauruk
- * @date 05/06/2020
+ * @email vauruk@gmail.com
+ * @linkedin https://www.linkedin.com/in/vauruk/
  */
 export const COLOR_SELECT = 'core/COLOR_SELECT'
 export const POKEDEX_LIST = 'core/POKEDEX_LIST'

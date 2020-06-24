@@ -16,6 +16,8 @@ const dict_pt = {
         'Name': 'Nome',
         'Send': 'Enviar',
         'Cancel': 'Cancelar',
+        'About': 'Sobre',
+        'News': 'Novidades',
 
     }
 }

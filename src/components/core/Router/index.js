@@ -9,12 +9,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { View, Image, Animated, Easing, StyleSheet, Platform, Text, TextInput } from 'react-native';
-import { Scene, Router, Actions, Drawer, Tabs, Stack, Lightbox } from 'react-native-router-flux';
+import {
+  View,
+  StyleSheet,
+  Text
+} from 'react-native';
+import {
+  Scene,
+  Router,
+  Actions,
+  Drawer,
+  Stack,
+} from 'react-native-router-flux';
 import {
   Button,
   Icon
 } from 'native-base'
+
 import { I18n } from '@aws-amplify/core';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import IconMaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -25,8 +36,8 @@ import Home from '../Home'
 import Login from '../Login'
 import Register from '../Register'
 import Splash from '../Splash'
-//import About from '../About'
-//import Help from '../Help'
+import About from '../About'
+import News from '../News'
 import theme, { styles } from '../Theme'
 
 /* Ícone menu Drawer */
@@ -106,13 +117,20 @@ class MainRouter extends Component<Props>  {
               //  onRight={() => console.log('Pressed')}
               // renderRightButton={<HeaderNotification />}
               />
-              {/* <Scene key="about"
+              <Scene key="about"
                 component={About}
                 onLeft={() => Actions.pop()}
                 navigationBarStyle={stylesLocal.navBar}
                 renderTitle={<Text style={styles.headerTitle}>{I18n.get('About')}</Text>}
                 leftTitle={arrowLeft}
-              /> */}
+              />
+              <Scene key="news"
+                component={News}
+                onLeft={() => Actions.pop()}
+                navigationBarStyle={stylesLocal.navBar}
+                renderTitle={<Text style={styles.headerTitle}>{I18n.get('News')}</Text>}
+                leftTitle={arrowLeft}
+              />
               {/* <Scene key="support"
                 component={Support}
                 onLeft={() => Actions.pop()}
