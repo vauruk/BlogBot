@@ -12,7 +12,11 @@
     - Hooks </br>
     - Redux </br>
     - Axios </br>
-    - Flipper </br>
+    - Flipper </br></br>
+  - Firebase </br>
+    - Auth  </br>
+    - Database </br>
+  
 
 <p>Requisitos de mobile:</p> 
 
