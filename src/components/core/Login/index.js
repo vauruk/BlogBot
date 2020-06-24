@@ -175,7 +175,7 @@ const Login: () => React$Node = () => {
                                 // type={'cpf'}
                                 autoFocus={true}
                                 placeholder={I18n.get('Email')}
-                                keyboardType='numeric'
+                                keyboardType='email-address'
                                 autoCapitalize='none'
                                 placeholderTextColor={theme.PRIMARY_COLOR_FONT}
                                 style={{ paddingBottom: 5, fontSize: theme.TEXT_18, color: theme.PRIMARY_COLOR_FONT }}

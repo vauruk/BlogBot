@@ -5,7 +5,7 @@
  * @linkedin https://www.linkedin.com/in/vauruk/
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -13,8 +13,6 @@ import {
   Text,
 } from 'react-native';
 
-import { Icon, Input, Spinner } from 'native-base'
-import { I18n } from '@aws-amplify/core';
 import { getUserDataAction } from '../../../services/actions/auth'
 
 import {
@@ -23,7 +21,9 @@ import {
 
 import theme, { styles } from '../Theme';
 
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import {
+  useDispatch,
+} from 'react-redux';
 
 
 const Home: () => React$Node = (props) => {
