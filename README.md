@@ -12,6 +12,7 @@
     - Hooks </br>
     - Redux </br>
     - Axios </br>
+    - Flipper </br>
 
 <p>Requisitos de mobile:</p> 
 
@@ -28,8 +29,10 @@
 * <b>Após baixar do git </B> </Br>
   - yarn install </br>
 * Rodando a aplicacao:</br>
-
-  - npx react-native run-ios
+   Usando Flipper
+  - npx react-native run-ios </br> 
+  Ou </br>
+  - yarn ios
 
 * Para rebuildar a aplicacao caso esteja com problemas: </br>
   - watchman watch-del-all && rm -rf node_modules && yarn install && yarn start --reset-cache && rm -rf /tmp/metro-\* </br>
