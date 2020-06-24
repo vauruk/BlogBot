@@ -13,13 +13,17 @@
     - Redux </br>
     - Axios </br>
 
-- Tarefa Listar todos os pokemons </br>
-- Acessar as seguintes informações de um pokemon: </Br>
-  - HP </Br>
-  - Ataque </Br>
-  - Defesa </Br>
-  - Velocidade Habilidades (abilities) </Br>
-  - Pesquisar um pokemon pelo nome Paginação dos resultados </Br></br></br>
+<p>Requisitos de mobile:</p> 
+
+•	Tela de splash screen com informações sobre você, fique à vontade pra apresentar seu nome, e-mail uma foto divertida sua J. Mas se quiser só colocar uma logo do seu produto, tá valendo ;) </br>
+•	Tela de login para informar e-mail e senha;</br>
+•	Tela de cadastro de um novo usuário solicitando nome, e-mail e senha;</br>
+•	Tela para listar postagens de até 280 caracteres, exibindo nome da pessoa que postou, data do post e texto do post;</br>
+•	Tela para listar as últimas novidades do Boticário. </br>
+•	Tela para fazer um novo post solicitando apenas um campo de texto;</br>
+•	Possibilidade de editar e excluir um post próprio que foi publicado.</br>
+•	Ao logar no app, na tela pela vez deverá trazer alguns posts (fake) de seus colegas;</br>
+
 
 * <b>Após baixar do git </B> </Br>
   - yarn install </br>
