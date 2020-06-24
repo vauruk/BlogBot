@@ -46,7 +46,10 @@
   - Aplicativo tem funcionamento simples, faz criacao e autententicacao usando firebase , consumo de noticias eh feito atraves do link:  https://gb-mobile-app-teste.s3.amazonaws.com/data.json , o salvamento do dos dados do blog eh feito no firebase database
 
 </br></br>
+</br></br>
 
+
+<p>Nota do programador :</p> 
 Run-> pod install
 yarn add react-native-gesture-handler react-native-reanimated react-native-screens redux-thunk redux redux-logger react-native-router-flux react-redux lodash axios @aws-amplify/core crypto-js@3.3.0 moment-timezone native-base react-native-keyboard-aware-scroll-view react-native-reanimated react-native-responsive-fontsize react-native-router-flux react-native-screens redux-persist
 @react-native-community/async-storage
