@@ -4,6 +4,6 @@ export const loadGravatar = (email) => {
     const gravatarUrl = 'https://www.gravatar.com/avatar/';
     let hashGravatar = md5(email);
     let url = gravatarUrl + hashGravatar + '?d=mp&s=120'
-    //console.log(email, url)
+    console.log(email, url)
     return url;
 }

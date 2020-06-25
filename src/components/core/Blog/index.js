@@ -18,7 +18,7 @@ import {
 import theme, { styles } from '../../core/Theme'
 import moment from 'moment-timezone'
 import { formatDataHour } from '../../../services/util/constants'
-import { listPostAction, savePostAction } from '../../../services/actions/blog'
+import { listPostAction } from '../../../services/actions/blog'
 import ItemPost from './itemPost'
 
 const Blog: () => React$Node = () => {

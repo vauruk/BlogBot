@@ -20,7 +20,8 @@ import theme, { styles } from '../Theme'
 
 import { Router, Scene, Actions, Stack } from 'react-native-router-flux';
 
-import vander from '../../../assets/vander.jpeg'
+//import vander from '../../../assets/vander.jpeg'
+import boticario from '../../../assets/grupo.png'
 import About from '../About'
 
 type Props = {};
@@ -58,8 +59,15 @@ export default class Splash extends Component<Props> {
           style={{ width: '100%', height: '100%', backgroundColor: theme.WHITE_COLOR }}
         >
           <View style={stylesLocal.container}>
-            <About />
-            <Spinner style={{ paddingTop: 20 }} color={theme.PRIMARY_COLOR} />
+            <Image style={{
+              alignItems: 'center',
+              width: '80%',
+              // Without height undefined it won't work
+              height: undefined,
+              // figure out your image aspect ratio
+              aspectRatio: 150 / 100,
+            }} source={boticario} />
+            <Spinner style={{ paddingTop: 20 }} color={theme.SECONDARY_COLOR} />
           </View>
         </Container>
       );

@@ -49,7 +49,7 @@ const SideBar: () => React$Node = (props) => {
         // dispatch(getUserDataAction())
     }, [])
 
-    //console.log("object", userData)
+    console.log("object", userData)
     handleLogout = () => {
         dispatch(logout())
         showModalLogout()
@@ -115,13 +115,16 @@ const SideBar: () => React$Node = (props) => {
                     <View>
                         <Grid style={stylesLocal.centerGrid}>
                             <Row style={{ margin: 10, marginTop: 50 }}>
-                                <Thumbnail source={{ uri: loadGravatar(userData ? userData.Email : null) }} large />
+                                <Thumbnail source={{ uri: loadGravatar(userData ? userData.email : null) }} large />
                             </Row>
-                            <Row style={{ margin: 10 }}>
-                                <Button iconLeft transparent onPress={() => Actions.profile()} style={{ marginTop: 25 }}>
-                                    <Text style={{ color: theme.PRIMARY_COLOR_FONT, fontSize: theme.TEXT_14 }}>{userData ? userData.displayName : ''} {userData ? userData.email : ''}</Text>
+                            <Row style={{ margin: 3 }}>
+                                <Button iconLeft transparent onPress={() => console.log('alterar perfil')} style={{ marginTop: 8 }}>
+                                    <Text style={{ color: theme.PRIMARY_COLOR_FONT, fontSize: theme.TEXT_14 }}>{userData ? userData.displayName : ''} </Text>
                                 </Button>
                             </Row>
+                            {/* <Row style={{ margin: 3 }}>
+                                <Text style={{ color: theme.PRIMARY_COLOR_FONT, fontSize: theme.TEXT_14 }}>{userData ? userData.email : ''} </Text>
+                            </Row> */}
                         </Grid>
                     </View>
                     <View style={{ borderBottomColor: theme.PRIMARY_COLOR, borderBottomWidth: 2 }}>

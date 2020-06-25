@@ -18,24 +18,30 @@ import {
 } from 'native-base'
 //import logo from '../../../assets/gb.png'
 import theme, { styles } from '../../core/Theme'
-import { savePostAction } from '../../../services/actions/blog'
+import { savePostAction, setPostTextAction, editPostAction } from '../../../services/actions/blog'
 
 const Blog: () => React$Node = () => {
     const dispatch = useDispatch()
     const valueSize = 280
-    const [text, setText] = useState(undefined)
+    const objPost = useSelector((state) => state.blog.post);
+    const uid = useSelector((state) => state.blog.uid);
+
+    const textPost = useSelector((state) => state.blog.textPost);
+
     const [sizeText, setSizeText] = useState(valueSize)
     const [saveDisable, setSaveDisable] = useState(false)
 
     handleSendPost = () => {
-        console.log("send", text)
-        if (text && sizeText <= valueSize) {
-
-            dispatch(savePostAction(text))
-            setText(undefined)
+        console.log("send", textPost)
+        if (textPost && sizeText <= valueSize) {
+            if (uid) {
+                dispatch(editPostAction(textPost, uid))
+            } else {
+                dispatch(savePostAction(textPost))
+            }
             setSizeText(valueSize)
             setSaveDisable(false)
-        } else if (!text) {
+        } else if (!textPost) {
             Alert.alert(
                 I18n.get('Error'),
                 I18n.get('É necessário digitar uma mensagem para postar'),
@@ -66,12 +72,13 @@ const Blog: () => React$Node = () => {
         } else {
             setSaveDisable(true)
         }
-        setText(value)
+        // setText(value)
+        dispatch(setPostTextAction(value))
     }
 
     return (
         <>
-            <View >
+            <View>
                 <View style={[{
                     height: 40,
                     flexDirection: 'row',
@@ -92,7 +99,7 @@ const Blog: () => React$Node = () => {
                             maxLength={280}
                             placeholderTextColor={theme.PRIMARY_COLOR_FONT}
                             style={{ marginLeft: 5, fontSize: theme.TEXT_14, color: theme.PRIMARY_COLOR_FONT }}
-                            value={text}
+                            value={textPost}
                             onChangeText={text => handleChangeValue(text)}
                             onSubmitEditing={() => handleSendPost()}
                         />

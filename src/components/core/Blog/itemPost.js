@@ -15,10 +15,10 @@ import {
     Text,
     Button
 } from 'native-base'
-import logo from '../../../assets/gb.png'
+//import logo from '../../../assets/gb.png'
 import theme, { styles } from '../../core/Theme'
 import { I18n } from '@aws-amplify/core';
-import { deletePostAction } from '../../../services/actions/blog'
+import { deletePostAction, selectPostAction } from '../../../services/actions/blog'
 import { formatDataHour } from '../../../services/util/constants'
 
 import moment from 'moment-timezone'
@@ -27,20 +27,22 @@ const ItemPost: () => React$Node = (props) => {
     const dispatch = useDispatch()
 
     const userData = useSelector(state => state.auth.userData)
-
     const item = props.item
-    // console.log("Item", item)
 
-    handleDeletePost = () => {
+    handleSelectPost = (objPost, uid) => {
+        console.log("item post", objPost, uid)
+        dispatch(selectPostAction(objPost, uid))
+    }
+
+    handleDeletePost = (uid) => {
         Alert.alert(
             I18n.get('Delete'),
-            `${I18n.get('Deseja excluir:')} ${props.uid}?`,
+            `${I18n.get('Deseja excluir:')} ${uid}?`,
             [
                 { text: I18n.get('No') },
-                { text: I18n.get('Yes'), onPress: () => dispatch(deletePostAction(props.uid)) },
+                { text: I18n.get('Yes'), onPress: () => dispatch(deletePostAction(uid)) },
             ],
         );
-
     }
 
     return (
@@ -58,14 +60,14 @@ const ItemPost: () => React$Node = (props) => {
                     alignContent: "center",
                     alignItems: "center",
                 }]}>
-                    <View style={{ flex: 0.1 }}  >
+                    <View style={{ flex: 0.01 }}  >
                         {/* <Image source={logo} style={{
                             marginLeft: 15,
                             width: 30,
                             height: 60
                         }} /> */}
                     </View>
-                    <View style={{ flex: 0.9 }} >
+                    <View style={{ flex: 0.99 }} >
                         <View>
                             <Text style={{ fontSize: theme.TEXT_12, color: theme.SECONDARY_COLOR }}>{item.userName}</Text>
                         </View>
@@ -77,12 +79,12 @@ const ItemPost: () => React$Node = (props) => {
                                 alignContent: "center",
                                 alignItems: "center",
                             }]}>
-                                <View style={{ flex: 0.4 }}  >
+                                <View style={{ flex: 0.5 }}  >
                                     <Text style={{ fontSize: theme.TEXT_10, color: theme.PRIMARY_COLOR }}>
                                         {moment(item.create_at).fromNow()}
                                     </Text>
                                 </View>
-                                <View style={{ flex: 0.5 }} >
+                                <View style={{ flex: 0.5, alignContent: "flex-end", alignItems: "flex-end" }} >
                                     <Text style={{ fontSize: theme.TEXT_10, color: theme.PRIMARY_COLOR }}>
                                         {moment(item.create_at).format(formatDataHour)}
                                     </Text>
@@ -92,29 +94,37 @@ const ItemPost: () => React$Node = (props) => {
                     </View>
                 </View>
                 <View>
+                    <Text style={{ margin: 5, textAlign: 'justify' }}> {item.post}</Text>
+                </View>
+                <View>
                     <View style={[{
                         flexDirection: 'row',
                         alignContent: "center",
                         alignItems: "center",
                     }]}>
-                        <View style={{ flex: 0.9 }} >
-                            <Text style={{ margin: 5, textAlign: 'justify' }}> {item.post}</Text>
+                        <View style={{ flex: 0.8 }} >
                         </View>
-                        <View style={{ flex: 0.1, alignItems: "flex-end" }} >
+                        <View style={{ flex: 0.1, alignItems: "flex-end", alignContent: "flex-end" }} >
                             {
                                 item.userId === userData.uid &&
-                                <Button style={{ marginRight: 5 }} iconRight transparent onPress={() => handleDeletePost()}>
+                                <Button block style={{ marginRight: 5 }} iconRight transparent onPress={() => handleSelectPost(item, props.uid)}>
+                                    <Icon type={'MaterialCommunityIcons'} name="pencil" size={15} style={{ marginLeft: 5, marginRight: 6, color: theme.SECONDARY_COLOR }} />
+                                </Button>
+                            }
+                        </View>
+                        <View style={{ flex: 0.1, alignItems: "flex-end", alignContent: "flex-end" }} >
+                            {
+                                item.userId === userData.uid &&
+                                <Button block style={{ marginRight: 5 }} iconRight transparent onPress={() => handleDeletePost(props.uid)}>
                                     <Icon type={'MaterialCommunityIcons'} name="delete" size={15} style={{ marginLeft: 5, marginRight: 6, color: theme.SECONDARY_COLOR }} />
                                 </Button>
                             }
                         </View>
                     </View>
-
                 </View>
             </View>
         </>
     );
-
 }
 
 export default ItemPost;

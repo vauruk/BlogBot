@@ -30,19 +30,12 @@ import SendPost from '../Blog/sendPost'
 
 
 const Home: () => React$Node = (props) => {
-  // const loading = useSelector(state => state.core.loading)
-  // const count = useSelector(state => state.core.count)
 
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getUserDataAction())
   }, [])
 
-  // searchPokemon = (textToSearch) => {
-  //   console.log("searchPokemon")
-  //   setTextToSearch(textToSearch)
-  //   dispatch(pokemonListAction(textToSearch))
-  // }
 
   return (
     <View style={{ height: '100%' }}>
