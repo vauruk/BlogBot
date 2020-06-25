@@ -111,7 +111,7 @@ class MainRouter extends Component<Props>  {
               <Scene key="home"
                 //initial
                 component={Home}
-                renderTitle={<Text style={styles.headerTitle}>{I18n.get('Home')}</Text>}
+                renderTitle={<Text style={styles.headerTitle}>{I18n.get('Blog Boticario')}</Text>}
                 navigationBarStyle={stylesLocal.navBar}
                 hideNavBar={false}
               //  onRight={() => console.log('Pressed')}

@@ -18,6 +18,8 @@ const dict_pt = {
         'Cancel': 'Cancelar',
         'About': 'Sobre',
         'News': 'Novidades',
+        'Error': 'Erro',
+        'Delete': 'Deletar',
 
     }
 }

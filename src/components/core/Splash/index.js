@@ -21,6 +21,7 @@ import theme, { styles } from '../Theme'
 import { Router, Scene, Actions, Stack } from 'react-native-router-flux';
 
 import vander from '../../../assets/vander.jpeg'
+import About from '../About'
 
 type Props = {};
 export default class Splash extends Component<Props> {
@@ -57,7 +58,7 @@ export default class Splash extends Component<Props> {
           style={{ width: '100%', height: '100%', backgroundColor: theme.WHITE_COLOR }}
         >
           <View style={stylesLocal.container}>
-            <Image source={vander} />
+            <About />
             <Spinner style={{ paddingTop: 20 }} color={theme.PRIMARY_COLOR} />
           </View>
         </Container>

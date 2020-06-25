@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import {
     Button,
-    Icon, Title,
-    Form, Item, Input, Label, Content,
-    Toast, Col, Row, Grid
+    Form, Item, Input,
+    Content,
 } from 'native-base';
 import { Text, Image } from 'react-native'
 import {

@@ -4,13 +4,15 @@
  */
 import { combineReducers } from 'redux';
 
-import core from './core';
-import auth from './auth';
-import news from './news';
+import core from './core'
+import auth from './auth'
+import news from './news'
+import blog from './blog'
 
 
 export default combineReducers({
     core,
     auth,
-    news
+    news,
+    blog
 });
