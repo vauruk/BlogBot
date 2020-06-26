@@ -33,9 +33,10 @@
 * <b>Após baixar do git </B> </Br>
   - yarn install </br>
 * Rodando a aplicacao:</br>
-   Usando Flipper
+   
   - npx react-native run-ios </br> 
   Ou </br>
+  Usando Flipper</br>
   - yarn ios
 
 * Para rebuildar a aplicacao caso esteja com problemas: </br>
