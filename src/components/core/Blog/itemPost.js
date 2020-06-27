@@ -45,6 +45,8 @@ const ItemPost: () => React$Node = (props) => {
         );
     }
 
+    console.log("item", item)
+
     return (
         <>
             <View style={{
@@ -107,7 +109,7 @@ const ItemPost: () => React$Node = (props) => {
                         <View style={{ flex: 0.1, alignItems: "flex-end", alignContent: "flex-end" }} >
                             {
                                 item.userId === userData.uid &&
-                                <Button block style={{ marginRight: 5 }} iconRight transparent onPress={() => handleSelectPost(item, props.uid)}>
+                                <Button block style={{ marginRight: 5 }} iconRight transparent onPress={() => handleSelectPost(item, item.uid)}>
                                     <Icon type={'MaterialCommunityIcons'} name="pencil" size={15} style={{ marginLeft: 5, marginRight: 6, color: theme.SECONDARY_COLOR }} />
                                 </Button>
                             }
@@ -115,7 +117,7 @@ const ItemPost: () => React$Node = (props) => {
                         <View style={{ flex: 0.1, alignItems: "flex-end", alignContent: "flex-end" }} >
                             {
                                 item.userId === userData.uid &&
-                                <Button block style={{ marginRight: 5 }} iconRight transparent onPress={() => handleDeletePost(props.uid)}>
+                                <Button block style={{ marginRight: 5 }} iconRight transparent onPress={() => handleDeletePost(item.uid)}>
                                     <Icon type={'MaterialCommunityIcons'} name="delete" size={15} style={{ marginLeft: 5, marginRight: 6, color: theme.SECONDARY_COLOR }} />
                                 </Button>
                             }

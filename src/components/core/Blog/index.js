@@ -31,6 +31,7 @@ const Blog: () => React$Node = () => {
         dispatch(listPostAction())
     }, [])
 
+    console.log("listPost", listPost)
 
     return (
         <>
@@ -44,7 +45,7 @@ const Blog: () => React$Node = () => {
                     {
                         !loading && listPost &&
                         Object.keys(listPost).reverse().map((key, index) => (
-                            <ItemPost key={key} uid={key} item={listPost[key]} />
+                            <ItemPost key={key} item={listPost[key]} />
                             // listPost.map(item =>
                             //console.log(item)
                             //listPost[key].post

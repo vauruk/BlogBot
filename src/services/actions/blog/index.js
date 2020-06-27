@@ -8,14 +8,11 @@
 import * as types from './types'
 import database from '@react-native-firebase/database'
 import moment from 'moment-timezone'
-import { Alert } from 'react-native';
 import _ from 'lodash'
-import { I18n } from '@aws-amplify/core';
 import { Toast } from 'native-base';
 
 
 export const listPostAction = () => {
-    console.log("listPostAction")
     return dispatch => {
 
         dispatch({ type: types.LOADING, payload: true })
@@ -31,14 +28,20 @@ export const listPostAction = () => {
         database()
             .ref('/blogs')
             .orderByValue('dateInverse')
-            .startAt(today)
-            //.once('value')
-            //.orderByKey()
-            // .orderByValue('dateInverse')
-            //.orderBy('dateInverse', 'desc')
             .on('value', snapshot => {
-                console.log('User data: ', snapshot.val());
-                dispatch({ type: types.LIST_BLOG, payload: snapshot.val() })
+                let arr = []
+                snapshot.forEach((child) => {
+                    //console.log("database", child, child._snapshot.key) // NOW THE CHILDREN PRINT IN ORDER
+                    let obj = child.val()
+                    _.set(obj, "uid", child._snapshot.key)
+                    arr.push(obj)
+                });
+                arr = arr.sort((a, b) => {
+                    return a.dateInverse - b.dateInverse;
+                })
+                //console.log('User data: ', arr);
+                //  dispatch({ type: types.LIST_BLOG, payload: snapshot.val() })
+                dispatch({ type: types.LIST_BLOG, payload: arr })
                 dispatch({ type: types.LOADING, payload: false })
             });
 
