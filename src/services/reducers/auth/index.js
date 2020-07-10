@@ -89,7 +89,7 @@ export default (state = initialState, action) => {
       return { ...state, loginLoading: action.payload };
     }
     case types.LOADING_REGISTER: {
-      return { ...state, loginLoading: action.payload };
+      return { ...state, registerLoading: action.payload };
     }
     default:
       return state;
