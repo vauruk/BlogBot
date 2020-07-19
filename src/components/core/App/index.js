@@ -71,7 +71,7 @@ const Register2 = () => (
     <Container>
         <Content>
             <Text style={styles.welcome}>
-                Register ee
+                Register 
             </Text>
         </Content>
     </Container>

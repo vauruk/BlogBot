@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1064425179735-4l3eld6ecro49l2g75p4pbho6s93u151.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1064425179735-4l3eld6ecro49l2g75p4pbho6s93u151</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAMTljnehE22V6lYPY8hWoguNSaH6gGEpg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1064425179735</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.vanderson.vauruk.boticarioblogteste</string>
+	<key>PROJECT_ID</key>
+	<string>blogboticario</string>
+	<key>STORAGE_BUCKET</key>
+	<string>blogboticario.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1064425179735:ios:3fc5e4b603b7089762f112</string>
+	<key>DATABASE_URL</key>
+	<string>https://blogboticario.firebaseio.com</string>
+</dict>
+</plist>

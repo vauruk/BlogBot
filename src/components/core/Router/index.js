@@ -6,64 +6,65 @@
  * @linkedin https://www.linkedin.com/in/vauruk/
  */
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import {
-  View,
-  StyleSheet,
-  Text
-} from 'react-native';
-import {
-  Scene,
-  Router,
-  Actions,
-  Drawer,
-  Stack,
-} from 'react-native-router-flux';
-import {
-  Button,
-  Icon
-} from 'native-base'
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {View, StyleSheet, Text} from 'react-native';
+import {Scene, Router, Actions, Drawer, Stack} from 'react-native-router-flux';
+import {Button, Icon} from 'native-base';
 
-import { I18n } from '@aws-amplify/core';
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
-import IconMaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons';
+import {I18n} from '@aws-amplify/core';
+import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
+//import IconMaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import SideBar from '../SideBar';
 
-import Home from '../Home'
-import Login from '../Login'
-import Register from '../Register'
-import Splash from '../Splash'
-import About from '../About'
-import News from '../News'
-import theme, { styles } from '../Theme'
+import Home from '../Home';
+import Login from '../Login';
+import Register from '../Register';
+import Splash from '../Splash';
+import About from '../About';
+import News from '../News';
+import theme, {styles} from '../Theme';
 
 /* Ícone menu Drawer */
-const myIcon = <Icon
-  type={'MaterialCommunityIcons'}
-  name="menu"
-  size={RFValue(35)}
-  color={theme.WHITE_COLOR}
-  style={{
-    marginTop: 5,
-  }} />
-
+const myIcon = (
+  <Icon
+    type={'MaterialCommunityIcons'}
+    name="menu"
+    size={RFValue(35)}
+    color={theme.WHITE_COLOR}
+    style={{
+      marginTop: 5,
+    }}
+  />
+);
 
 /* Ícone voltar da navegação */
-const arrowLeft = <IconMaterialCommunity name="chevron-left" size={RFValue(35)} color={theme.WHITE_COLOR} />;
-const iconMenu = (<Icon type={'MaterialCommunityIcons'} name="menu" style={{ fontSize: 30, color: theme.WHITE_COLOR }} />);
+const arrowLeft = (
+  <Icon
+    type={'MaterialCommunityIcons'}
+    name="chevron-left"
+    style={{fontSize: 30, color: theme.WHITE_COLOR}}
+  />
+);
+const iconMenu = (
+  <Icon
+    type={'MaterialCommunityIcons'}
+    name="menu"
+    style={{fontSize: 30, color: theme.WHITE_COLOR}}
+  />
+);
 
 type Props = {};
-class MainRouter extends Component<Props>  {
+class MainRouter extends Component {
   constructor(props) {
     super(props);
   }
 
   navBackProfile = () => {
-    Actions.pop()
-  }
+    Actions.pop();
+  };
 
   // selectEditReminder = () => {
   //   if (this.props.selectTypeSchedule === MEDICINE) {
@@ -74,17 +75,16 @@ class MainRouter extends Component<Props>  {
   //   }
   // }
 
-
   render() {
-    console.log("isAuthenticated", this.props.isAuthenticated)
+    console.log('isAuthenticated', this.props.isAuthenticated);
     return (
       <Router>
-        <Scene key="root"
-          hideNavBar
-          hideTabBar
-          panHandlers={null}>
+        <Scene key="root" hideNavBar  hideTabBar panHandlers={null}>
           {/* Cenas do fluxo autenticado. */}
           <Drawer
+            onPress={() => {
+              console.log('Drawer closed');
+            }}
             hideNavBar
             key="drawer"
             onExit={() => {
@@ -97,38 +97,48 @@ class MainRouter extends Component<Props>  {
             drawerWidth={300}
             contentComponent={SideBar}
             drawerPosition="left"
-            navTransparent
-          >
+            navTransparent>
             {/* Você deixa as cenas dentro de uma mesma stack para orientar a navegação */}
             <Stack
               key="main"
               panHandlers={null}
               {...sceneConfig}
               initial={this.props.isAuthenticated} // Define se esta cena é a inicial ou não true / false
-            //initial={true} // Debug: Define como true manualmente para ir direto para esta cena.
+              //initial={true} // Debug: Define como true manualmente para ir direto para esta cena.
             >
               {/* demais cenas autenticadas devem ser inseridas aqui */}
-              <Scene key="home"
+              <Scene
+                key="home"
                 //initial
                 component={Home}
-                renderTitle={<Text style={styles.headerTitle}>{I18n.get('Blog Boticario')}</Text>}
+                renderTitle={
+                  <Text style={styles.headerTitle}>
+                    {I18n.get('Blog Boticario')}
+                  </Text>
+                }
                 navigationBarStyle={stylesLocal.navBar}
                 hideNavBar={false}
-              //  onRight={() => console.log('Pressed')}
-              // renderRightButton={<HeaderNotification />}
+                //  onRight={() => console.log('Pressed')}
+                // renderRightButton={<HeaderNotification />}
               />
-              <Scene key="about"
+              <Scene
+                key="about"
                 component={About}
                 onLeft={() => Actions.pop()}
                 navigationBarStyle={stylesLocal.navBar}
-                renderTitle={<Text style={styles.headerTitle}>{I18n.get('About')}</Text>}
+                renderTitle={
+                  <Text style={styles.headerTitle}>{I18n.get('About')}</Text>
+                }
                 leftTitle={arrowLeft}
               />
-              <Scene key="news"
+              <Scene
+                key="news"
                 component={News}
                 onLeft={() => Actions.pop()}
                 navigationBarStyle={stylesLocal.navBar}
-                renderTitle={<Text style={styles.headerTitle}>{I18n.get('News')}</Text>}
+                renderTitle={
+                  <Text style={styles.headerTitle}>{I18n.get('News')}</Text>
+                }
                 leftTitle={arrowLeft}
               />
               {/* <Scene key="support"
@@ -145,7 +155,6 @@ class MainRouter extends Component<Props>  {
                 navigationBarStyle={stylesLocal.navBar}
                 leftTitle={arrowLeft}
               /> */}
-
             </Stack>
             {/* this.selectEditReminder() */}
           </Drawer>
@@ -155,8 +164,7 @@ class MainRouter extends Component<Props>  {
             initial={!this.props.isAuthenticated} // Se não estiver autenticado, torna esta cena a inicial.
             key="auth"
             panHandlers={null}
-            {...sceneConfig}
-          >
+            {...sceneConfig}>
             <Scene
               key="splash"
               //initial={true}
@@ -178,7 +186,9 @@ class MainRouter extends Component<Props>  {
               titleStyle={styles.headerTitle}
               onLeft={() => Actions.pop()}
               // title={I18n.get('Register')}
-              renderTitle={<Text style={styles.headerTitle}> {I18n.get('Register')}</Text>}
+              renderTitle={
+                <Text style={styles.headerTitle}> {I18n.get('Register')}</Text>
+              }
               leftTitle={arrowLeft}
               navigationBarStyle={stylesLocal.navBar}
             />
@@ -190,7 +200,6 @@ class MainRouter extends Component<Props>  {
               leftTitle={arrowLeft}
               navigationBarStyle={stylesLocal.navBar}
             /> */}
-
           </Scene>
         </Scene>
       </Router>
@@ -208,18 +217,13 @@ function areEqual() {
   return true;
 }
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({
-  }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({}, dispatch);
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(MainRouter);
+export default connect(mapStateToProps, mapDispatchToProps)(MainRouter);
 
 const stylesLocal = StyleSheet.create({
   cardStyle: {
@@ -245,7 +249,6 @@ const stylesLocal = StyleSheet.create({
     backgroundColor: '#3A3A3A',
     borderColor: 'transparent',
   },
-
 });
 
 const sceneConfig = {
@@ -273,10 +276,8 @@ const sceneConfig = {
   },
 };
 
-
-
-
-{/* <Router hideNavBar="true">
+{
+  /* <Router hideNavBar="true">
   <Stack key="root">
     <Scene key="home" component={DrawerNav} title="Home" />
     <Scene key="login" component={Login} hideNavBar={true} />
@@ -284,34 +285,23 @@ const sceneConfig = {
     <Scene key="drawer" component={DrawerNav} drawer={true} />
     <Scene key="splash" component={Splash} hideNavBar={true} initial={true} />
   </Stack>
-</Router> */}
-
+</Router> */
+}
 
 const Login2 = () => (
   <View>
-
-    <Text style={styles.welcome}>
-      Register
-           </Text>
+    <Text style={styles.welcome}>Register</Text>
     <Button
       title="Press me"
       color="#f194ff"
       onPress={() => Alert.alert('Button with adjusted color pressed')}
     />
-    <Button
-      title="Home"
-      color="#f194ff"
-      onPress={() => Actions.home()}
-    />
-    <Button
-      title="Teste"
-      color="#f194ff"
-      onPress={() => Actions.teste()}
-    />
+    <Button title="Home" color="#f194ff" onPress={() => Actions.home()} />
+    <Button title="Teste" color="#f194ff" onPress={() => Actions.teste()} />
   </View>
-)
+);
 const SideMenu = () => (
   <View style={styles.container}>
     <Text>menu items go here</Text>
   </View>
-)
+);

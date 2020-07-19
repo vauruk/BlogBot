@@ -57,3 +57,21 @@ yarn add react-native-gesture-handler react-native-reanimated react-native-scree
 
 senha: 123456789
 alias: boticario
+
+- PARA GERAR BUILD POR COMANDO 
+https://facebook.github.io/react-native/docs/signed-apk-android.html
+- Gerar apk 
+- entrar na pastar 
+  /android e rodar o comando 
+  --    ./gradlew assembleRelease
+react-native run-android --variant=release
+
+cd android && ./gradlew assembleRelease
+
+  o build apk fica na pasta 
+  android/app/build/outputs/apk/app-release.apk
+
+  react-native run-ios --simulator="iPhone Xs Max"
+
+  xcrun simctl list --json devices
+  
