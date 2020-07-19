@@ -172,7 +172,7 @@ const Login: () => React$Node = () => {
             enabled
             keyboardVerticalOffset={10}>
             <ScrollView>
-              <View style={{height: theme.HEIGHT}}>
+              <View style={{height: theme.HEIGHT, marginBottom: 30}}>
                 <View style={[styles.centerGrid, {marginTop: 100}]}>
                   <Image
                     style={{

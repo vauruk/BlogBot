@@ -172,8 +172,10 @@ const SideBar: () => React$Node = (props) => {
                             currentUser &&
                             <ListItem style={stylesLocal.item} onPress={() => showModalLogout()}>
                                 <Left>
+                                <Button iconLeft transparent>
                                     <Icon type={'MaterialCommunityIcons'} name="logout-variant" style={{ marginLeft: 5, fontSize: 25, marginRight: 6, color: theme.SECONDARY_COLOR }} />
-                                    <Text style={{ marginLeft: 10, color: theme.SECONDARY_COLOR, fontSize: theme.TEXT_14 }}>{I18n.get('Sign Out')}</Text>
+                                </Button>
+                                    <Text style={{ marginLeft: 5, color: theme.SECONDARY_COLOR, fontSize: theme.TEXT_14 }}>{I18n.get('Sign Out')}</Text>
                                 </Left>
                             </ListItem>
                         }

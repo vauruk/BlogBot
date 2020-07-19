@@ -1,14 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch, shallowEqual} from 'react-redux';
 import {Button, Form, Item, Input, Content, Spinner} from 'native-base';
-import {Text, Image, View, Platform} from 'react-native';
+import {
+  Text,
+  Image,
+  View,
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 //import { Actions } from 'react-native-router-flux'
 import moment from 'moment-timezone';
 import {I18n} from '@aws-amplify/core';
 //import { TextInputMask } from 'react-native-masked-text'
 import {signUp, getUserDataAction} from '../../../services/actions/auth';
 import {isEmail} from '../../core/function/email';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+//import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import boticario from '../../../assets/logogb.png';
 import theme, {styles} from '../Theme';
 import _ from 'lodash';
@@ -113,143 +122,150 @@ const Register: () => React$Node = (props) => {
 
   return (
     <>
-      <Content style={{flex: 1, backgroundColor: theme.WHITE_COLOR}}>
-        <KeyboardAwareScrollView>
-          <View>
-            <View style={[styles.centerGrid, {marginTop: 20}]}>
-              <Image
-                style={{
-                  alignItems: 'center',
-                  width: '80%',
-                  // Without height undefined it won't work
-                  height: undefined,
-                  // figure out your image aspect ratio
-                  aspectRatio: 150 / 100,
-                }}
-                source={boticario}
-              />
-            </View>
-            <View style={[styles.centerGrid, {marginTop: 30}]}>
-              {errorRegisterMessage && (
-                <Text
-                  style={{
-                    marginLeft: '10%',
-                    marginRight: '10%',
-                    color: theme.EMERGENCY_COLOR,
-                    fontSize: theme.TEXT_18,
-                  }}>
-                  {I18n.get(this.props.errorRegisterMessage)}
-                </Text>
-              )}
-              {!errorRegisterMessage && <Text></Text>}
-            </View>
-            <View style={{margin: 40, marginTop: 5}}>
-              <Form>
-                <Item style={{marginTop: 5, marginLeft: 5, marginRight: 5}}>
-                  <Input
-                    keyboardType="default"
-                    value={displayName}
-                    placeholderTextColor={theme.PRIMARY_COLOR_FONT}
+      <SafeAreaView>
+        <View style={{backgroundColor: theme.WHITE_COLOR}}>
+          <KeyboardAvoidingView
+            behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+            enabled
+            keyboardVerticalOffset={10}>
+            <ScrollView>
+              <View style={{marginBottom: 35}}> 
+                <View style={[styles.centerGrid, {marginTop: 20}]}>
+                  <Image
                     style={{
-                      fontSize: theme.TEXT_18,
-                      color: theme.PRIMARY_COLOR_FONT,
+                      alignItems: 'center',
+                      width: '80%',
+                      // Without height undefined it won't work
+                      height: undefined,
+                      // figure out your image aspect ratio
+                      aspectRatio: 150 / 100,
                     }}
-                    maxLength={155}
-                    placeholder={I18n.get('Name')}
-                    autoCapitalize="none"
-                    onChangeText={(value) =>
-                      handleChange(value, valueName.DISPLAY_NAME)
-                    }
+                    source={boticario}
                   />
-                </Item>
-                <Item
-                  style={{marginTop: 5, marginLeft: 5, marginRight: 5}}
-                  error={message ? true : false}>
-                  <Input
-                    keyboardType="email-address"
-                    placeholderTextColor={theme.PRIMARY_COLOR_FONT}
-                    style={{
-                      fontSize: theme.TEXT_18,
-                      color: theme.PRIMARY_COLOR_FONT,
-                    }}
-                    textContentType="emailAddress"
-                    maxLength={60}
-                    value={email}
-                    placeholder={I18n.get('Email')}
-                    autoCapitalize="none"
-                    onChangeText={(value) =>
-                      handleChange(value, valueName.EMAIL)
-                    }
-                  />
-                </Item>
-                <Item style={{marginTop: 5, marginLeft: 5, marginRight: 5}}>
-                  <Input
-                    placeholder={I18n.get('Password')}
-                    value={password}
-                    autoCapitalize="none"
-                    secureTextEntry={true}
-                    maxLength={11}
-                    placeholderTextColor={theme.PRIMARY_COLOR_FONT}
-                    style={{
-                      fontSize: theme.TEXT_18,
-                      color: theme.PRIMARY_COLOR_FONT,
-                    }}
-                    onChangeText={(text) =>
-                      handleChange(text, valueName.PASSWORD)
-                    }
-                  />
-                </Item>
-                <Item style={{marginTop: 5, marginLeft: 5, marginRight: 5}}>
-                  <Input
-                    placeholder={I18n.get('Retry Password')}
-                    maxLength={11}
-                    secureTextEntry={true}
-                    autoCapitalize="none"
-                    value={retryPassword}
-                    placeholderTextColor={theme.PRIMARY_COLOR_FONT}
-                    style={{
-                      fontSize: theme.TEXT_18,
-                      color: theme.PRIMARY_COLOR_FONT,
-                    }}
-                    onChangeText={(text) =>
-                      handleChange(text, valueName.RETRY_PASSWORD)
-                    }
-                  />
-                </Item>
-
-                {!registerLoading && (
-                  <Button
-                    block
-                    style={[styles.buttonDefault, {marginTop: 30}]}
-                    onPress={() => handleSave()}>
+                </View>
+                <View style={[styles.centerGrid, {marginTop: 30}]}>
+                  {errorRegisterMessage && (
                     <Text
                       style={{
-                        textTransform: 'capitalize',
+                        marginLeft: '10%',
+                        marginRight: '10%',
+                        color: theme.EMERGENCY_COLOR,
                         fontSize: theme.TEXT_18,
-                        color: theme.WHITE_COLOR,
                       }}>
-                      {I18n.get('Save')}
+                      {I18n.get(this.props.errorRegisterMessage)}
                     </Text>
-                  </Button>
-                )}
-                
-                {registerLoading && (
-                  <Button
-                    block
-                    style={[
-                      styles.buttonDefault,
-                      {
-                        marginTop: 30,
-                      },
-                    ]}>
-                    <Spinner color={theme.WHITE_COLOR} />
-                  </Button>
-                )}
-              </Form>
-            </View>
-          </View>
-        </KeyboardAwareScrollView>
-      </Content>
+                  )}
+                  {!errorRegisterMessage && <Text></Text>}
+                </View>
+                <View style={{margin: 40, marginTop: 5}}>
+                  <Form>
+                    <Item style={{marginTop: 5, marginLeft: 5, marginRight: 5}}>
+                      <Input
+                        keyboardType="default"
+                        value={displayName}
+                        placeholderTextColor={theme.PRIMARY_COLOR_FONT}
+                        style={{
+                          fontSize: theme.TEXT_18,
+                          color: theme.PRIMARY_COLOR_FONT,
+                        }}
+                        maxLength={155}
+                        placeholder={I18n.get('Name')}
+                        autoCapitalize="none"
+                        onChangeText={(value) =>
+                          handleChange(value, valueName.DISPLAY_NAME)
+                        }
+                      />
+                    </Item>
+                    <Item
+                      style={{marginTop: 5, marginLeft: 5, marginRight: 5}}
+                      error={message ? true : false}>
+                      <Input
+                        keyboardType="email-address"
+                        placeholderTextColor={theme.PRIMARY_COLOR_FONT}
+                        style={{
+                          fontSize: theme.TEXT_18,
+                          color: theme.PRIMARY_COLOR_FONT,
+                        }}
+                        textContentType="emailAddress"
+                        maxLength={60}
+                        value={email}
+                        placeholder={I18n.get('Email')}
+                        autoCapitalize="none"
+                        onChangeText={(value) =>
+                          handleChange(value, valueName.EMAIL)
+                        }
+                      />
+                    </Item>
+                    <Item style={{marginTop: 5, marginLeft: 5, marginRight: 5}}>
+                      <Input
+                        placeholder={I18n.get('Password')}
+                        value={password}
+                        autoCapitalize="none"
+                        secureTextEntry={true}
+                        maxLength={11}
+                        placeholderTextColor={theme.PRIMARY_COLOR_FONT}
+                        style={{
+                          fontSize: theme.TEXT_18,
+                          color: theme.PRIMARY_COLOR_FONT,
+                        }}
+                        onChangeText={(text) =>
+                          handleChange(text, valueName.PASSWORD)
+                        }
+                      />
+                    </Item>
+                    <Item style={{marginTop: 5, marginLeft: 5, marginRight: 5}}>
+                      <Input
+                        placeholder={I18n.get('Retry Password')}
+                        maxLength={11}
+                        secureTextEntry={true}
+                        autoCapitalize="none"
+                        value={retryPassword}
+                        placeholderTextColor={theme.PRIMARY_COLOR_FONT}
+                        style={{
+                          fontSize: theme.TEXT_18,
+                          color: theme.PRIMARY_COLOR_FONT,
+                        }}
+                        onChangeText={(text) =>
+                          handleChange(text, valueName.RETRY_PASSWORD)
+                        }
+                      />
+                    </Item>
+
+                    {!registerLoading && (
+                      <Button
+                        block
+                        style={[styles.buttonDefault, {marginTop: 30}]}
+                        onPress={() => handleSave()}>
+                        <Text
+                          style={{
+                            textTransform: 'capitalize',
+                            fontSize: theme.TEXT_18,
+                            color: theme.WHITE_COLOR,
+                          }}>
+                          {I18n.get('Save')}
+                        </Text>
+                      </Button>
+                    )}
+
+                    {registerLoading && (
+                      <Button
+                        block
+                        style={[
+                          styles.buttonDefault,
+                          {
+                            marginTop: 30,
+                          },
+                        ]}>
+                        <Spinner color={theme.WHITE_COLOR} />
+                      </Button>
+                    )}
+                  </Form>
+                </View>
+              </View>
+            </ScrollView>
+          </KeyboardAvoidingView>
+        </View>
+      </SafeAreaView>
     </>
   );
 };
