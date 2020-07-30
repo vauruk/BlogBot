@@ -54,7 +54,7 @@ const ItemPost: () => React$Node = (props) => {
                 borderWidth: 1,
                 borderColor: theme.LIGHT_GRAY_COLOR,
                 borderRadius: 10,
-                backgroundColor: item.userId === userData.uid ? theme.LIGHT_DIVIDER : theme.WHITE_COLOR
+                backgroundColor: userData && item.userId === userData.uid ? theme.LIGHT_DIVIDER : theme.WHITE_COLOR
             }}>
                 <View style={[{
                     //height: 60,
@@ -108,7 +108,7 @@ const ItemPost: () => React$Node = (props) => {
                         </View>
                         <View style={{ flex: 0.1, alignItems: "flex-end", alignContent: "flex-end" }} >
                             {
-                                item.userId === userData.uid &&
+                                userData && item.userId === userData.uid &&
                                 <Button block style={{ marginRight: 5 }} iconRight transparent onPress={() => handleSelectPost(item, item.uid)}>
                                     <Icon type={'MaterialCommunityIcons'} name="pencil" size={15} style={{ marginLeft: 5, marginRight: 6, color: theme.SECONDARY_COLOR }} />
                                 </Button>
@@ -116,7 +116,7 @@ const ItemPost: () => React$Node = (props) => {
                         </View>
                         <View style={{ flex: 0.1, alignItems: "flex-end", alignContent: "flex-end" }} >
                             {
-                                item.userId === userData.uid &&
+                               userData &&  item.userId === userData.uid &&
                                 <Button block style={{ marginRight: 5 }} iconRight transparent onPress={() => handleDeletePost(item.uid)}>
                                     <Icon type={'MaterialCommunityIcons'} name="delete" size={15} style={{ marginLeft: 5, marginRight: 6, color: theme.SECONDARY_COLOR }} />
                                 </Button>
