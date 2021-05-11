@@ -18,7 +18,7 @@
     "@react-native-firebase/database": "^7.3.2",
     "axios": "^0.19.2",
     "crypto-js": "3.3.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "moment-timezone": "^0.5.31",
     "native-base": "^2.13.12",
     "react": "16.13.1",
